@@ -2,17 +2,12 @@
 
 How to run:
 
-Fist, clone these repos all in the same directory, next to each other
-
-- https://github.com/Dirbaio/rp2040-rust-test
-- https://github.com/Dirbaio/rp2040-pac
-- https://github.com/Dirbaio/probe-run
-- https://github.com/Dirbaio/probe-rs
-
-Then you're done
-
-  cd rp2040-rust-test
-  cargo run
+    git clone https://github.com/Dirbaio/rp2040-rust-test
+    git clone https://github.com/Dirbaio/rp2040-pac
+    git clone https://github.com/Dirbaio/probe-run
+    git clone https://github.com/Dirbaio/probe-rs
+    cd rp2040-rust-test
+    cargo run
   
 # License
 
