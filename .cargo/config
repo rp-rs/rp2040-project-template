@@ -1,0 +1,18 @@
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+runner = "./probe-run.sh"
+
+rustflags = [
+  "-C", "link-arg=--nmagic",
+  "-C", "link-arg=-Tlink.x",
+  "-C", "link-arg=-Tdefmt.x",
+]
+
+[build]
+# Pick ONE of these compilation targets
+target = "thumbv6m-none-eabi"        # Cortex-M0 and Cortex-M0+
+# target = "thumbv7m-none-eabi"        # Cortex-M3
+# target = "thumbv7em-none-eabi"       # Cortex-M4 and Cortex-M7 (no FPU)
+# target = "thumbv7em-none-eabihf"     # Cortex-M4F and Cortex-M7F (with FPU)
+# target = "thumbv8m.base-none-eabi"   # Cortex-M23
+# target = "thumbv8m.main-none-eabi"   # Cortex-M33 (no FPU)
+# target = "thumbv8m.main-none-eabihf" # Cortex-M33 (with FPU)
