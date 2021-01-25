@@ -15,7 +15,7 @@ defmt-rtt = "0.1.0"
 panic-probe = "0.1.0"
 
 rp2040-pac = { git = "https://github.com/rp-rs/rp2040-pac", branch="main" }
-rp2040-boot2 = { git = "https://github.com/rp-rs/rp2040-boot2-rs" }
+rp2040-boot2 = { git = "https://github.com/rp-rs/rp2040-boot2-rs", branch="vector" }
 #rp2040-pac = { path = "../rp2040-pac" }
 #rp2040-boot2 = { path = "../rp2040-boot2-rs" }
 
