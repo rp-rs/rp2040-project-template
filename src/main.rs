@@ -6,6 +6,10 @@ use cortex_m_rt::entry;
 use defmt::*;
 use defmt_rtt as _; // global logger
 use panic_probe as _;
+
+// this adds boot2 to the .boot_loader section
+// linker script then places that at start of flash.
+use rp2040_boot2 as _;
 use rp2040_pac as pac;
 
 #[defmt::timestamp]
