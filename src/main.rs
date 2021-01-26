@@ -6,8 +6,12 @@ use core::sync::atomic::{AtomicUsize, Ordering};
 use cortex_m_rt::entry;
 use defmt::*;
 use defmt_rtt as _;
+use pac::{watchdog, xosc};
 use panic_probe as _;
 use rp2040_pac as pac;
+
+mod pll;
+mod resets;
 
 #[link_section = ".boot2"]
 #[used]
@@ -22,80 +26,64 @@ fn timestamp() -> u64 {
     n as u64
 }
 
-mod reset_bits {
-    pub const ALL: u32 = 0x01ffffff;
-    pub const USBCTRL: u32 = 0x01000000;
-    pub const UART1: u32 = 0x00800000;
-    pub const UART0: u32 = 0x00400000;
-    pub const TIMER: u32 = 0x00200000;
-    pub const TBMAN: u32 = 0x00100000;
-    pub const SYSINFO: u32 = 0x00080000;
-    pub const SYSCFG: u32 = 0x00040000;
-    pub const SPI1: u32 = 0x00020000;
-    pub const SPI0: u32 = 0x00010000;
-    pub const RTC: u32 = 0x00008000;
-    pub const PWM: u32 = 0x00004000;
-    pub const PLL_USB: u32 = 0x00002000;
-    pub const PLL_SYS: u32 = 0x00001000;
-    pub const PIO1: u32 = 0x00000800;
-    pub const PIO0: u32 = 0x00000400;
-    pub const PADS_QSPI: u32 = 0x00000200;
-    pub const PADS_BANK0: u32 = 0x00000100;
-    pub const JTAG: u32 = 0x00000080;
-    pub const IO_QSPI: u32 = 0x00000040;
-    pub const IO_BANK0: u32 = 0x00000020;
-    pub const I2C1: u32 = 0x00000010;
-    pub const I2C0: u32 = 0x00000008;
-    pub const DMA: u32 = 0x00000004;
-    pub const BUSCTRL: u32 = 0x00000002;
-    pub const ADC: u32 = 0x00000001;
-}
-
-struct Resets {
-    inner: pac::RESETS,
-}
-
-impl Resets {
-    fn new(inner: pac::RESETS) -> Self {
-        Self { inner }
-    }
-
-    fn reset(&self, bits: u32) {
-        self.inner.reset.write(|w| unsafe { w.bits(bits) })
-    }
-
-    fn unreset_wait(&self, bits: u32) {
-        // TODO use the "atomic clear" register version
-        self.inner
-            .reset
-            .modify(|r, w| unsafe { w.bits(r.bits() & !bits) });
-        while ((!self.inner.reset_done.read().bits()) & bits) != 0 {}
-    }
-}
-
-fn setup_chip(resets: pac::RESETS) {
+fn init(
+    resets: pac::RESETS,
+    watchdog: pac::WATCHDOG,
+    clocks: pac::CLOCKS,
+    xosc: pac::XOSC,
+    pll_sys: pac::PLL_SYS,
+    pll_usb: pac::PLL_USB,
+) {
     // Now reset all the peripherals, except QSPI and XIP (we're using those
     // to execute from external flash!)
 
-    let resets = Resets::new(resets);
+    let resets = resets::Resets::new(resets);
 
     // Reset everything except:
     // - QSPI (we're using it to run this code!)
     // - PLLs (it may be suicide if that's what's clocking us)
-    resets.reset(
-        !(reset_bits::IO_QSPI | reset_bits::PADS_QSPI | reset_bits::PLL_SYS | reset_bits::PLL_USB),
-    );
+    resets.reset(!(resets::IO_QSPI | resets::PADS_QSPI | resets::PLL_SYS | resets::PLL_USB));
 
     resets.unreset_wait(
-        reset_bits::ALL
-            & !(reset_bits::ADC
-                | reset_bits::RTC
-                | reset_bits::SPI0
-                | reset_bits::SPI1
-                | reset_bits::UART0
-                | reset_bits::UART1
-                | reset_bits::USBCTRL),
+        resets::ALL
+            & !(resets::ADC
+                | resets::RTC
+                | resets::SPI0
+                | resets::SPI1
+                | resets::UART0
+                | resets::UART1
+                | resets::USBCTRL),
     );
+
+    // xosc 12 mhz
+    watchdog
+        .tick
+        .write(|w| unsafe { w.cycles().bits(XOSC_MHZ as u16).enable().set_bit() });
+
+    clocks.clk_sys_resus_ctrl.write(|w| unsafe { w.bits(0) });
+
+    // Enable XOSC
+    // TODO extract to HAL module
+    const XOSC_MHZ: u32 = 12;
+    xosc.ctrl.write(|w| w.freq_range()._1_15mhz());
+    let startup_delay = (((XOSC_MHZ * 1_000_000) / 1000) + 128) / 256;
+    xosc.startup
+        .write(|w| unsafe { w.delay().bits(startup_delay as u16) });
+    xosc.ctrl
+        .write(|w| w.freq_range()._1_15mhz().enable().enable());
+    while !xosc.status.read().stable().bit_is_set() {}
+
+    // Before we touch PLLs, switch sys and ref cleanly away from their aux sources.
+    clocks.clk_sys_ctrl.modify(|_, w| w.src().clk_ref());
+    while clocks.clk_sys_selected.read().bits() != 1 {}
+    clocks.clk_ref_ctrl.modify(|_, w| w.src().rosc_clksrc_ph());
+    while clocks.clk_ref_selected.read().bits() != 1 {}
+
+    resets.reset(resets::PLL_SYS | resets::PLL_USB);
+    resets.unreset_wait(resets::PLL_SYS | resets::PLL_USB);
+
+    pll::PLL::new(pll_sys).configure(1, 1500_000_000, 6, 2);
+    pll::PLL::new(pll_usb).configure(1, 480_000_000, 5, 2);
 }
 
 #[entry]
@@ -104,7 +92,7 @@ fn main() -> ! {
 
     let p = pac::Peripherals::take().unwrap();
 
-    setup_chip(p.RESETS);
+    init(p.RESETS, p.WATCHDOG, p.CLOCKS, p.XOSC, p.PLL_SYS, p.PLL_USB);
 
     loop {
         info!("on!");
