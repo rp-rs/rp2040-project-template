@@ -1,5 +1,6 @@
 [target.'cfg(all(target_arch = "arm", target_os = "none"))']
-runner = "./probe-run.sh"
+#runner = "./probe-run.sh"
+runner = "probe-run-rp --chip RP2040"
 
 rustflags = [
   "-C", "link-arg=--nmagic",
