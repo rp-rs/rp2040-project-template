@@ -6,6 +6,11 @@ rustflags = [
   "-C", "link-arg=--nmagic",
   "-C", "link-arg=-Tlink.x",
   "-C", "link-arg=-Tdefmt.x",
+
+  # Code-size optimizations.
+  "-Z", "trap-unreachable=no",
+  "-C", "inline-threshold=5",
+  "-C", "no-vectorize-loops",
 ]
 
 [build]
