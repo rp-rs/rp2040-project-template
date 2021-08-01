@@ -1,13 +1,13 @@
 [package]
-authors = ["Dario Nieuwenhuis <dirbaio@dirbaio.net>"]
+authors = ["the rp-rs team"]
 edition = "2018"
 readme = "README.md"
-name = "rp-test"
+name = "app-template-rp2040-hal"
 version = "0.1.0"
 
 [dependencies]
-cortex-m = { version = "0.7.1", features = ["inline-asm"] }
-cortex-m-rt = "0.6.10"
+cortex-m = "0.7.3"
+cortex-m-rt = "0.6.15"
 embedded-hal = { version = "0.2.5", features=["unproven"] }
 embedded-time = "0.12.0"
 
@@ -17,11 +17,6 @@ panic-probe = "0.1.0"
 
 rp2040-hal = { git = "https://github.com/rp-rs/rp-hal", branch="main" }
 rp2040-boot2 = { git = "https://github.com/rp-rs/rp2040-boot2-rs", branch="main" }
-panic-halt = "0.2.0"
-
-
-[patch.crates-io]
-cortex-m = { git = "https://github.com/rust-embedded/cortex-m" }
 
 [features]
 default = [
