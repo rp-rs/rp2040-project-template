@@ -59,7 +59,6 @@ fn main() -> ! {
     loop {
         info!("on!");
         led_pin.set_high().unwrap();
-        // TODO: Replace with proper 1s delays once we have clocks working
         delay.delay_ms(500);
         info!("off!");
         led_pin.set_low().unwrap();
