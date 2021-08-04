@@ -29,13 +29,6 @@ defmt-info = []
 defmt-warn = []
 defmt-error = []
 
-
-# this lets you use `cargo fix`!
-[[bin]]
-name = "rp-test"
-test = false
-bench = false
-
 [profile.dev]
 codegen-units = 1
 debug = 2
