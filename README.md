@@ -15,7 +15,7 @@ cargo run --release
 
 - Toolchain support for the cortex-m0+ processors in the rp2040 (thumbv6m-none-eabi)
 
-- flip-link - this allows you to detect stack-overflows
+- flip-link - this allows you to detect stack-overflows on the first core, which is the only supported target for now.
 
 - probe-run. Upstream support for RP2040 is not finished yet, so this template uses `probe-run-rp` for now.
   `probe-run-rp` is a version of `probe-run` using a `probe-rs` fork with support for the RP2040 chip.
@@ -28,6 +28,7 @@ cargo run --release
   You can use a second Pico as a CMSIS-DAP debug probe by installing the following firmware on it:
   https://github.com/majbthrd/DapperMime/releases/download/20210225/raspberry_pi_pico-DapperMime.uf2
 
+  More details on supported debug probes can be found in [debug_probes.md](debug_probes.md)
 
 ## Installation of development dependencies
 ```
