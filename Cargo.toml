@@ -2,7 +2,7 @@
 authors = ["the rp-rs team"]
 edition = "2018"
 readme = "README.md"
-name = "app-template-rp2040-hal"
+name = "rp2040-project-template"
 version = "0.1.0"
 
 [dependencies]
