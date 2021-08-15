@@ -1,4 +1,4 @@
-# App template for rp2040-hal with knurling-rs tooling
+# Project template for rp2040-hal
 
 This template is intended as a starting point for developing your own firmware based on the rp2040-hal.
 
@@ -11,7 +11,6 @@ cargo run --release
 
 ## Requirements
 - The standard Rust tooling (cargo, rustup) which you can install from https://rustup.rs/
-
 
 - Toolchain support for the cortex-m0+ processors in the rp2040 (thumbv6m-none-eabi)
 
