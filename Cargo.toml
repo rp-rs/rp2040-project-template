@@ -15,7 +15,7 @@ defmt = "0.1.3"
 defmt-rtt = "0.1.0"
 panic-probe = "0.1.0"
 
-rp2040-hal = "0.2.0"
+rp2040-hal = { git = "https://github.com/rp-rs/rp-hal", branch="main" }
 rp2040-boot2 = { git = "https://github.com/rp-rs/rp2040-boot2-rs", branch="main" }
 
 [features]
