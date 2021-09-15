@@ -4,10 +4,11 @@ edition = "2018"
 readme = "README.md"
 name = "rp2040-project-template"
 version = "0.1.0"
+resolver = "2"
 
 [dependencies]
 cortex-m = "0.7.3"
-cortex-m-rt = "0.6.15"
+cortex-m-rt = "0.7.0"
 embedded-hal = { version = "0.2.5", features=["unproven"] }
 embedded-time = "0.12.0"
 
