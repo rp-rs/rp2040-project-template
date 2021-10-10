@@ -32,7 +32,7 @@ cargo run --release
 ## Installation of development dependencies
 ```
 rustup target install thumbv6m-none-eabi
-cargo install --git https://github.com/rp-rs/probe-run --branch main
+cargo install --git https://github.com/rp-rs/probe-run --branch rp2040-support
 cargo install flip-link
 ```
 
