@@ -8,7 +8,10 @@
   - Boot the Pico in bootloader mode by holding the bootset button while plugging it in
   - Open the drive RPI-RP2 when prompted
   - Copy raspberry_pi_pico-DapperMime.uf2 from Downloads into RPI-RP2
-  - Connect the debug pins of your CMSIS-DAP pico to the target one
+  - Connect the debug pins of your CMSIS-DAP Pico to the target one
+      - Connect GP2 on the Probe to SWCLK on the Target
+      - Connect GP3 on the Probe to SWDIO on the Target
+      - Connect a ground line from the CMSIS-DAP Probe to the Target too
 
 ## WeAct MiniF4
 https://therealprof.github.io/blog/usb-c-pill-part1/
