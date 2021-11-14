@@ -6,7 +6,7 @@ It includes all of the `knurling-rs` tooling as showcased in https://github.com/
 
 `probe-run-rp` is configured as the default runner, so you can start your program as easy as
 ```
-cargo run --release
+DEFMT_LOG=trace cargo run --release
 ```
 
 ## Requirements
@@ -40,11 +40,11 @@ cargo install flip-link
 
 For a debug build
 ```
-cargo run
+DEFMT_LOG=trace cargo run
 ```
 For a release build
 ```
-cargo run --release
+DEFMT_LOG=trace cargo run --release
 ```
   
 ## License
