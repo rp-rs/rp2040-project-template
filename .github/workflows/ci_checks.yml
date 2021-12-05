@@ -70,4 +70,5 @@ jobs:
         with:
           toolchain: stable
           components: rustfmt
+      - run: rustup target install --toolchain=${{ matrix.rust }} thumbv6m-none-eabi
       - run: cargo fmt -- --check
