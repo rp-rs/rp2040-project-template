@@ -59,9 +59,11 @@ fn main() -> ! {
     loop {
         info!("on!");
         led_pin.set_high().unwrap();
-        delay.delay_ms(500);
+        delay.delay_ms(rp2040_project_template::LED_DELAY_MS);
         info!("off!");
         led_pin.set_low().unwrap();
-        delay.delay_ms(500);
+        delay.delay_ms(rp2040_project_template::LED_DELAY_MS);
     }
 }
+
+// End of file

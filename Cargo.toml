@@ -23,10 +23,8 @@ pico = { git = "https://github.com/rp-rs/rp-hal", branch="main"}
 # pro_micro_rp2040 = { git = "https://github.com/rp-rs/rp-hal", branch="main"}
 
 # If you're not going to use a Board Support Package you'll need these:
-#rp2040-hal = { git = "https://github.com/rp-rs/rp-hal", branch="main", features=["rt"] }
-#rp2040-boot2 = { git = "https://github.com/rp-rs/rp2040-boot2-rs", branch="main" }
-
-
+# rp2040-hal = { git = "https://github.com/rp-rs/rp-hal", branch="main", features=["rt"] }
+# rp2040-boot2 = { git = "https://github.com/rp-rs/rp2040-boot2-rs", branch="main" }
 
 # cargo build/run
 [profile.dev]
