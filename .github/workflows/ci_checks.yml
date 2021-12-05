@@ -55,6 +55,7 @@ jobs:
         with:
           toolchain: stable
           components: clippy
+      - run: rustup target install thumbv6m-none-eabi
       - uses: actions-rs/clippy-check@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
