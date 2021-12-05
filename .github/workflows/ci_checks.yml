@@ -40,6 +40,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
       - run: cargo test
   linting:
     name: Linting
@@ -50,7 +52,8 @@ jobs:
           submodules: true
       - uses: actions-rs/toolchain@v1
         with:
-            components: clippy
+          toolchain: stable
+          components: clippy
       - uses: actions-rs/clippy-check@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -64,5 +67,6 @@ jobs:
           submodules: true
       - uses: actions-rs/toolchain@v1
         with:
+          toolchain: stable
           components: rustfmt
       - run: cargo fmt -- --check
