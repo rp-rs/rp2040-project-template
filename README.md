@@ -28,8 +28,11 @@ DEFMT_LOG=trace cargo run --release
 ## Installation of development dependencies
 ```
 rustup target install thumbv6m-none-eabi
-cargo install probe-run
 cargo install flip-link
+# This is our suggested default 'runner'
+cargo install probe-run
+# If you want to use elf2uf2-rs instead of probe-run, instead do...
+cargo install elf2usb2-rs 
 ```
 
 ## Running
