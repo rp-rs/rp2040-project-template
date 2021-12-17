@@ -32,7 +32,7 @@ cargo install flip-link
 # This is our suggested default 'runner'
 cargo install probe-run
 # If you want to use elf2uf2-rs instead of probe-run, instead do...
-cargo install elf2usb2-rs 
+cargo install elf2uf2-rs
 ```
 
 ## Running
@@ -45,8 +45,17 @@ For a release build
 ```
 DEFMT_LOG=trace cargo run --release
 ```
-  
+
+To load firmware directly into RP2040, for example you don't have a probe, comment and uncomment following lines in `.cargo/config.toml`:
+
+```
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+# runner = "probe-run --chip RP2040"
+runner = "elf2uf2-rs -d"
+```
+
 <!-- ROADMAP -->
+
 ## Roadmap
 
 NOTE These packages are under active development. As such, it is likely to
