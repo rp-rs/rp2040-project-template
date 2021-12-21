@@ -136,8 +136,7 @@ Some of the options for your `runner` are listed below:
   $ cargo install elf2uf2-rs --locked
   ```
 
-  *Step 2* - Make sure your .cargo/config contains the following (it should by
-  default if you are working in this repository):
+  *Step 2* - Make sure your .cargo/config contains the following
 
   ```toml
   [target.thumbv6m-none-eabi]
