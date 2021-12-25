@@ -17,7 +17,7 @@ defmt-rtt = "0.3.0"
 panic-probe = { version = "0.3.0", features = ["print-defmt"] }
 
 # We're using a Pico by default on this template
-pico = { git = "https://github.com/rp-rs/rp-hal", branch="main"}
+rp-pico = { git = "https://github.com/rp-rs/rp-hal", branch="main"}
 
 # but you can use any BSP. Uncomment this to use the pro_micro_rp2040 BSP instead
 # pro_micro_rp2040 = { git = "https://github.com/rp-rs/rp-hal", branch="main"}
