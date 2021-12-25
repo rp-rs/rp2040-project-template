@@ -17,14 +17,14 @@ defmt-rtt = "0.3.0"
 panic-probe = { version = "0.3.0", features = ["print-defmt"] }
 
 # We're using a Pico by default on this template
-pico = { git = "https://github.com/rp-rs/rp-hal", branch="main"}
+rp-pico = "0.2.0"
 
 # but you can use any BSP. Uncomment this to use the pro_micro_rp2040 BSP instead
-# pro_micro_rp2040 = { git = "https://github.com/rp-rs/rp-hal", branch="main"}
+# sparkfun-pro-micro-rp2040 = "0.1.0"
 
 # If you're not going to use a Board Support Package you'll need these:
-# rp2040-hal = { git = "https://github.com/rp-rs/rp-hal", branch="main", features=["rt"] }
-# rp2040-boot2 = { git = "https://github.com/rp-rs/rp2040-boot2-rs", branch="main" }
+# rp2040-hal = { version="0.3.0", features=["rt"] }
+# rp2040-boot2 = "0.2.0"
 
 # cargo build/run
 [profile.dev]
