@@ -6,7 +6,7 @@ It includes all of the `knurling-rs` tooling as showcased in https://github.com/
 
 `probe-run` is configured as the default runner, so you can start your program as easy as
 ```sh
-DEFMT_LOG=trace cargo run --release
+cargo run --release
 ```
 
 If you aren't using a debugger, check out [alternative runners](#alternative-runners) for other options
@@ -71,33 +71,29 @@ cargo install elf2uf2-rs --locked
   
 For a debug build
 ```sh
-DEFMT_LOG=trace cargo run
+cargo run
 ```
 For a release build
 ```sh
-DEFMT_LOG=trace cargo run --release
+cargo run --release
 ```
 
-If you do not specify a DEFMT_LOG level, only `println!("")` statements will be printed  
-You can either set this inline (on Linux/MacOS)  
+If you do not specify a DEFMT_LOG level, it will be set to `debug`.
+That means `println!("")`, `info!("")` and `debug!("")`  statements will be printed.
+If you wish to override this, you can change it in `.cargo/config.toml` 
+```toml
+[env]
+DEFMT_LOG = "off"
+```
+You can also set this inline (on Linux/MacOS)  
 ```sh
 DEFMT_LOG=trace cargo run
 ```
 
-or set the `environment variable` so that it applies to every `cargo run` call that follows.
+or set the `environment variable` so that it applies to every `cargo run` call that follows:
 #### Linux/MacOS/unix
 ```sh
 export DEFMT_LOG=trace
-```
-
-#### Windows
-- cmd
-```cmd
-set DEFMT_LOG=trace
-```
-- powershell
-```ps1
-$Env:DEFMT_LOG = trace
 ```
 
 Setting the DEFMT_LOG level for the current session  
@@ -106,12 +102,14 @@ for bash
 export DEFMT_LOG=trace
 ```
 
-Windows users must set DEFMT_LOG once as a separate step before calling `cargo run`
-for cmd
+#### Windows
+Windows users can only override DEFMT_LOG through `config.toml` or by setting
+the environment variable as a separate step before calling `cargo run`
+- cmd
 ```cmd
 set DEFMT_LOG=trace
 ```
-for powershell
+- powershell
 ```ps1
 $Env:DEFMT_LOG = trace
 ```
