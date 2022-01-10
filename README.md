@@ -79,7 +79,7 @@ cargo run --release
 ```
 
 If you do not specify a DEFMT_LOG level, it will be set to `debug`.
-That means `println!("")`, `info!("")` and `debug!("")`  statements will be printed.
+That means `println!("")`, `info!("")` and `debug!("")` statements will be printed.
 If you wish to override this, you can change it in `.cargo/config.toml` 
 ```toml
 [env]
@@ -103,8 +103,8 @@ export DEFMT_LOG=trace
 ```
 
 #### Windows
-Windows users can only override DEFMT_LOG through `config.toml` or by setting
-the environment variable as a separate step before calling `cargo run`
+Windows users can only override DEFMT_LOG through `config.toml`
+or by setting the environment variable as a separate step before calling `cargo run`
 - cmd
 ```cmd
 set DEFMT_LOG=trace
