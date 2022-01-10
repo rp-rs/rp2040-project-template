@@ -90,7 +90,7 @@ You can also set this inline (on Linux/MacOS)
 DEFMT_LOG=trace cargo run
 ```
 
-or set the `environment variable` so that it applies to every `cargo run` call that follows:
+or set the _environment variable_ so that it applies to every `cargo run` call that follows:
 #### Linux/MacOS/unix
 ```sh
 export DEFMT_LOG=trace
