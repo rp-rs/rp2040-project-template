@@ -40,7 +40,7 @@ If you aren't using a debugger, check out [alternative runners](#alternative-run
 
 - probe-run. Upstream support for RP2040 was added with version 0.3.1.
 
-- A CMSIS-DAP probe. (JLink probes sort of work but are very unstable. Other probes won't work at all)
+- A CMSIS-DAP probe. (J-Link and other probes will not work with probe-run)
 
   You can use a second Pico as a CMSIS-DAP debug probe by installing the following firmware on it:
   https://github.com/majbthrd/DapperMime/releases/download/20210225/raspberry_pi_pico-DapperMime.uf2
