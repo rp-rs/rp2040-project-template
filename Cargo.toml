@@ -17,13 +17,13 @@ defmt-rtt = "0.3.0"
 panic-probe = { version = "0.3.0", features = ["print-defmt"] }
 
 # We're using a Pico by default on this template
-rp-pico = "0.3.0"
+rp-pico = "0.4.0"
 
 # but you can use any BSP. Uncomment this to use the pro_micro_rp2040 BSP instead
-# sparkfun-pro-micro-rp2040 = "0.2.0"
+# sparkfun-pro-micro-rp2040 = "0.3.0"
 
 # If you're not going to use a Board Support Package you'll need these:
-# rp2040-hal = { version="0.4.0", features=["rt"] }
+# rp2040-hal = { version="0.5.0", features=["rt"] }
 # rp2040-boot2 = "0.2.0"
 
 # cargo build/run
