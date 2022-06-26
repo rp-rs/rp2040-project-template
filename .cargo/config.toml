@@ -1,8 +1,11 @@
-# Choose a default "cargo run" tool.
-# probe-run is recommended if you have a debugger
-# elf2uf2-rs loads firmware over USB when the rp2040 is in boot mode
 [target.'cfg(all(target_arch = "arm", target_os = "none"))']
+# Choose a default "cargo run" tool:
+# - probe-run provides flashing and defmt via a hardware debugger
+# - cargo embed offers flashing, rtt, defmt and a gdb server via a hardware debugger
+#     it is configured via the Embed.toml in the root of this project
+# - elf2uf2-rs loads firmware over USB when the rp2040 is in boot mode
 runner = "probe-run --chip RP2040"
+# runner = "cargo embed"
 # runner = "elf2uf2-rs -d"
 
 rustflags = [
