@@ -9,7 +9,7 @@ It includes all of the `knurling-rs` tooling as showcased in https://github.com/
 cargo run --release
 ```
 
-If you aren't using a debugger, check out [alternative runners](#alternative-runners) for other options
+If you aren't using a debugger (or want to use cargo-embed/probe-rs-debugger), check out [alternative runners](#alternative-runners) for other options
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -127,6 +127,32 @@ If you don't have a debug probe or if you want to do interactive debugging you c
 
 Some of the options for your `runner` are listed below:
 
+* **cargo embed**  
+  *Step 1* - Install [`cargo embed`](https://github.com/probe-rs/cargo-embed):
+
+  ```console
+  $ cargo install --force --git https://github.com/probe-rs/cargo-embed
+  ```
+
+  *Step 2* - Make sure your .cargo/config contains the following
+
+  ```toml
+  [target.thumbv6m-none-eabi]
+  runner = "cargo embed"
+  ```
+
+  *Step 3* - Update settings in [Embed.toml](./Embed.toml)  
+  - The defaults are to flash, reset, and start a defmt logging session
+  You can find all the settings and their meanings [in the cargo-embed repo](https://github.com/probe-rs/cargo-embed/blob/master/src/config/default.toml)
+
+  *Step 4* - Use `cargo run`, which will compile the code and start the
+  specified 'runner'. As the 'runner' is cargo embed, it will flash the device
+  and start running immediately
+
+  ```console
+  $ cargo run --release
+  ```
+
 * **Loading a UF2 over USB**  
   *Step 1* - Install [`elf2uf2-rs`](https://github.com/JoNil/elf2uf2-rs):
 
@@ -148,12 +174,12 @@ Some of the options for your `runner` are listed below:
   whilst holding some kind of "Boot Select" button. On Linux, you will also need
   to 'mount' the device, like you would a USB Thumb Drive.
 
-  *Step 4* - Use `cargo run`, which will compile the code and started the
+  *Step 4* - Use `cargo run`, which will compile the code and start the
   specified 'runner'. As the 'runner' is the elf2uf2-rs tool, it will build a UF2
   file and copy it to your RP2040.
 
   ```console
-  $ cargo run --release --example pico_pwm_blink
+  $ cargo run --release
   ```
 
 * **Loading with picotool**  
