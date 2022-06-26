@@ -1,6 +1,6 @@
 [package]
 authors = ["the rp-rs team"]
-edition = "2018"
+edition = "2021"
 readme = "README.md"
 name = "rp2040-project-template"
 version = "0.1.0"
