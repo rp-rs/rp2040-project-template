@@ -153,6 +153,24 @@ Some of the options for your `runner` are listed below:
   $ cargo run --release
   ```
 
+* **probe-rs-debugger**
+
+  *Step 1* - Download [`probe-rs-debugger VSCode plugin 0.4.0`](https://github.com/probe-rs/vscode/releases/download/v0.4.0/probe-rs-debugger-0.4.0.vsix)
+
+  *Step 2* - Install `probe-rs-debugger VSCode plugin`
+  ```console
+  $ code --install-extension probe-rs-debugger-0.4.0.vsix
+  ```
+
+  *Step 3* - Install `probe-rs-debugger`
+  ```console
+  $ cargo install --git https://github.com/probe-rs/probe-rs probe-rs-debugger
+  ```
+
+  *Step 4* - Open this project in VSCode
+
+  *Step 5* - Launch a debug session by choosing `Run`>`Start Debugging` (or press F5)
+
 * **Loading a UF2 over USB**  
   *Step 1* - Install [`elf2uf2-rs`](https://github.com/JoNil/elf2uf2-rs):
 
