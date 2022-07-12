@@ -164,7 +164,7 @@ Some of the options for your `runner` are listed below:
 
   *Step 3* - Install `probe-rs-debugger`
   ```console
-  $ cargo install --git https://github.com/probe-rs/probe-rs probe-rs-debugger
+  $ cargo install probe-rs-debugger
   ```
 
   *Step 4* - Open this project in VSCode
