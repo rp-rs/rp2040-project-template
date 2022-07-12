@@ -131,7 +131,7 @@ Some of the options for your `runner` are listed below:
   *Step 1* - Install [`cargo embed`](https://github.com/probe-rs/cargo-embed):
 
   ```console
-  $ cargo install --force --git https://github.com/probe-rs/cargo-embed
+  $ cargo install cargo-embed
   ```
 
   *Step 2* - Make sure your .cargo/config contains the following
