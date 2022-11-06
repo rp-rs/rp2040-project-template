@@ -42,8 +42,11 @@ If you aren't using a debugger (or want to use cargo-embed/probe-rs-debugger), c
 
 - A CMSIS-DAP probe. (J-Link and other probes will not work with probe-run)
 
-  You can use a second Pico as a CMSIS-DAP debug probe by installing the following firmware on it:
+  You can use a second Pico as a CMSIS-DAP debug probe by installing either of the following firmware on it:
+
   https://github.com/majbthrd/DapperMime/releases/download/20210225/raspberry_pi_pico-DapperMime.uf2
+
+  https://raw.githubusercontent.com/9names/binary-bits/main/rust-dap-pico-ramexec-setclock.uf2
 
   More details on supported debug probes can be found in [debug_probes.md](debug_probes.md)
 

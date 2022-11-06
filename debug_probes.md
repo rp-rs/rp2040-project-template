@@ -4,7 +4,7 @@
 
   You can use a second Pico as your debugger.
 
-  -  Download this file: https://github.com/majbthrd/DapperMime/releases/download/20210225/raspberry_pi_pico-DapperMime.uf2
+  - Download this file: https://github.com/majbthrd/DapperMime/releases/download/20210225/raspberry_pi_pico-DapperMime.uf2
   - Boot the Pico in bootloader mode by holding the bootset button while plugging it in
   - Open the drive RPI-RP2 when prompted
   - Copy raspberry_pi_pico-DapperMime.uf2 from Downloads into RPI-RP2
@@ -12,6 +12,9 @@
       - Connect GP2 on the Probe to SWCLK on the Target
       - Connect GP3 on the Probe to SWDIO on the Target
       - Connect a ground line from the CMSIS-DAP Probe to the Target too
+
+  If you have good wiring between your Pico's, you can instead use rust-dap for faster programming:
+  https://raw.githubusercontent.com/9names/binary-bits/main/rust-dap-pico-ramexec-setclock.uf2
 
 ## WeAct MiniF4
 https://therealprof.github.io/blog/usb-c-pill-part1/
