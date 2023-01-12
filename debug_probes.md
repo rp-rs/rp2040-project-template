@@ -2,19 +2,27 @@
 
 ## Raspberry Pi Pico
 
-  You can use a second Pico as your debugger.
+You can use a second Pico as your debugger.
 
-  - Download this file: https://github.com/majbthrd/DapperMime/releases/download/20210225/raspberry_pi_pico-DapperMime.uf2
-  - Boot the Pico in bootloader mode by holding the bootset button while plugging it in
-  - Open the drive RPI-RP2 when prompted
-  - Copy raspberry_pi_pico-DapperMime.uf2 from Downloads into RPI-RP2
-  - Connect the debug pins of your CMSIS-DAP Pico to the target one
-      - Connect GP2 on the Probe to SWCLK on the Target
-      - Connect GP3 on the Probe to SWDIO on the Target
-      - Connect a ground line from the CMSIS-DAP Probe to the Target too
+Download one of these firmware files:
 
-  If you have good wiring between your Pico's, you can instead use rust-dap for faster programming:
-  https://raw.githubusercontent.com/9names/binary-bits/main/rust-dap-pico-ramexec-setclock.uf2
+- [picoprobe.uf2](https://github.com/raspberrypi/picoprobe/releases/download/picoprobe-cmsis-v1.0.1/picoprobe.uf2) -
+  Official raspberrypi probe firmware supporting CMSIS-DAP.
+- [raspberry_pi_pico-DapperMime.uf2](https://github.com/majbthrd/DapperMime/releases/download/20210225/raspberry_pi_pico-DapperMime.uf2) -
+  Based upon an older version of the CMSIS-DAP sources.
+- [rust-dap-pico-ramexec-setclock.uf2](https://raw.githubusercontent.com/9names/binary-bits/main/rust-dap-pico-ramexec-setclock.uf2) -
+  If you have good wiring between your Pico's, this firmware will give faster
+  programming.
+
+Then:
+
+1. Put the Pico into USB Mass Storage Mode by holding the BOOTSEL button while connecting it to your computer with a USB cable
+2. Open the drive RPI-RP2 when prompted
+3. Copy the uf2 firmware file from Downloads into RPI-RP2
+4. Connect the debug pins of your CMSIS-DAP Pico to the target one
+   - Connect GP2 on the Probe to SWCLK on the Target
+   - Connect GP3 on the Probe to SWDIO on the Target
+   - Connect a ground line from the CMSIS-DAP Probe to the Target too
 
 ## WeAct MiniF4
 https://therealprof.github.io/blog/usb-c-pill-part1/
