@@ -16,8 +16,7 @@ Download one of these firmware files:
 
 Then:
 
-1. Boot the Pico in bootloader mode by holding the bootset button while plugging
-   it in
+1. Put the Pico into USB Mass Storage Mode by holding the BOOTSEL button while connecting it to your computer with a USB cable
 2. Open the drive RPI-RP2 when prompted
 3. Copy the uf2 firmware file from Downloads into RPI-RP2
 4. Connect the debug pins of your CMSIS-DAP Pico to the target one
