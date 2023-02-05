@@ -128,7 +128,7 @@ If you don't have a debug probe or if you want to do interactive debugging you c
 Some of the options for your `runner` are listed below:
 
 * **cargo embed**  
-  *Step 1* - Install [`cargo embed`](https://github.com/probe-rs/cargo-embed):
+  *Step 1* - Install [`cargo embed`](https://github.com/probe-rs/probe-rs/blob/master/cargo-embed):
 
   ```console
   $ cargo install cargo-embed
@@ -143,7 +143,7 @@ Some of the options for your `runner` are listed below:
 
   *Step 3* - Update settings in [Embed.toml](./Embed.toml)  
   - The defaults are to flash, reset, and start a defmt logging session
-  You can find all the settings and their meanings [in the cargo-embed repo](https://github.com/probe-rs/cargo-embed/blob/master/src/config/default.toml)
+  You can find all the settings and their meanings [in the cargo-embed repo](https://github.com/probe-rs/probe-rs/blob/master/cargo-embed/src/config/default.toml)
 
   *Step 4* - Use `cargo run`, which will compile the code and start the
   specified 'runner'. As the 'runner' is cargo embed, it will flash the device
