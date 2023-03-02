@@ -163,6 +163,28 @@ Some of the options for your `runner` are listed below:
 
   *Step 5* - Launch a debug session by choosing `Run`>`Start Debugging` (or press F5)
 
+* **probe-rs-cli**  
+  *Step 1* - Install [`probe-rs-cli`](https://crates.io/crates/probe-rs-cli):
+
+  ```console
+  $ cargo install probe-rs-cli
+  ```
+
+  *Step 2* - Make sure your .cargo/config contains the following
+
+  ```toml
+  [target.thumbv6m-none-eabi]
+  runner = "probe-rs-cli run --chip RP2040 --protocol swd"
+  ```
+
+  *Step 3* - Use `cargo run`, which will compile the code and start the
+  specified 'runner'. As the 'runner' is cargo embed, it will flash the device
+  and start running immediately
+
+  ```console
+  $ cargo run --release
+  ```
+
 * **Loading a UF2 over USB**  
   *Step 1* - Install [`elf2uf2-rs`](https://github.com/JoNil/elf2uf2-rs):
 
