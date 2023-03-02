@@ -134,23 +134,15 @@ Some of the options for your `runner` are listed below:
   $ cargo install cargo-embed
   ```
 
-  *Step 2* - Make sure your .cargo/config contains the following
-
-  ```toml
-  [target.thumbv6m-none-eabi]
-  runner = "cargo embed"
-  ```
-
-  *Step 3* - Update settings in [Embed.toml](./Embed.toml)  
+  *Step 2* - Update settings in [Embed.toml](./Embed.toml)  
   - The defaults are to flash, reset, and start a defmt logging session
   You can find all the settings and their meanings [in the cargo-embed repo](https://github.com/probe-rs/probe-rs/blob/master/cargo-embed/src/config/default.toml)
 
-  *Step 4* - Use `cargo run`, which will compile the code and start the
-  specified 'runner'. As the 'runner' is cargo embed, it will flash the device
-  and start running immediately
+  *Step 3* - Use the command `cargo embed`, which will compile the code, flash the device
+  and start running the configuration specified in Embed.toml
 
   ```console
-  $ cargo run --release
+  $ cargo embed --release
   ```
 
 * **probe-rs-debugger**
