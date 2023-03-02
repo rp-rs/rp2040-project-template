@@ -25,42 +25,35 @@ jobs:
           - windows-latest
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
+      - uses: actions/checkout@v3
+      - uses: dtolnay/rust-toolchain@master
         with:
-          profile: minimal
           toolchain: ${{ matrix.rust }}
-          override: true
+          target: thumbv6m-none-eabi
       - run: cargo install flip-link
-      - run: rustup target install --toolchain=${{ matrix.rust }} thumbv6m-none-eabi
       - run: cargo build --all
       - run: cargo build --all --release
   linting:
     name: Linting
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: true
-      - uses: actions-rs/toolchain@v1
+      - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: stable
           components: clippy
-      - run: rustup target install thumbv6m-none-eabi
-      - uses: actions-rs/clippy-check@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          args: --all-features -- -D warnings
+          target: thumbv6m-none-eabi
+      - run: cargo clippy --all-features -- --deny=warnings
   formatting:
     name: Formatting
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: true
-      - uses: actions-rs/toolchain@v1
+      - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: stable
           components: rustfmt
-      - run: rustup target install thumbv6m-none-eabi
+          target: thumbv6m-none-eabi
       - run: cargo fmt -- --check
