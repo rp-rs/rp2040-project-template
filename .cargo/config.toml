@@ -10,7 +10,9 @@ rustflags = [
   "-C", "link-arg=--nmagic",
   "-C", "link-arg=-Tlink.x",
   "-C", "link-arg=-Tdefmt.x",
-  "-C", "link-arg=--allow-multiple-definition",
+  # for nightly cross-compiles on non-Tier 1 Rust platform hosts
+  # uncomment the next line
+  # "-C", "link-arg=--allow-multiple-definition",
  
   # Code-size optimizations.
   #   trap unreachable can save a lot of space, but requires nightly compiler.
@@ -26,7 +28,8 @@ target = "thumbv6m-none-eabi"
 [env]
 DEFMT_LOG = "debug"
 
-# for cross-compiling using nightly
-[unstable]
-mtime-on-use = true
-build-std = ["core", "alloc"]
+# for cross-compiling using nightly on non-Tier 1 Rust platform hosts
+# uncoment the [unstable] section
+# [unstable]
+# mtime-on-use = true
+# build-std = ["core", "alloc"]

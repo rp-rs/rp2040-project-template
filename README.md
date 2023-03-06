@@ -217,6 +217,18 @@ Some of the options for your `runner` are listed below:
 
 </details>
 
+#### using nightly compiler
+
+If you want to use the nightly compiler, especially on non-Tier 1 platforms (e.g.
+macOS with Apple Silicon), please see the `.cargo/config.toml` file for
+instructions in the rustflags list and the unstable section.
+
+Example invocation:
+
+```console
+cargo +nightly run --release
+```
+
 <!-- ROADMAP -->
 
 ## Roadmap
