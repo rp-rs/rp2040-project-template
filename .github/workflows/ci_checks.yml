@@ -30,6 +30,7 @@ jobs:
         with:
           toolchain: ${{ matrix.rust }}
           target: thumbv6m-none-eabi
+          components: rust-src
       - run: cargo install flip-link
       - run: cargo build --all
       - run: cargo build --all --release
