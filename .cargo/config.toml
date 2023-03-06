@@ -24,3 +24,8 @@ target = "thumbv6m-none-eabi"
 
 [env]
 DEFMT_LOG = "debug"
+
+# for cross-compiling using nightly
+[unstable]
+mtime-on-use = true
+build-std = ["core", "alloc"]
