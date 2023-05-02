@@ -132,7 +132,7 @@ Some of the options for your `runner` are listed below:
   *Step 1* - Install [`cargo embed`](https://github.com/probe-rs/probe-rs/blob/master/cargo-embed):
 
   ```console
-  $ cargo install cargo-embed
+  $ cargo install --locked cargo-embed
   ```
 
   *Step 2* - Update settings in [Embed.toml](./Embed.toml)  
