@@ -57,8 +57,7 @@ If you aren't using a debugger (or want to use cargo-embed/probe-rs-debugger), c
 rustup target install thumbv6m-none-eabi
 cargo install flip-link
 # This is our suggested default 'runner'
-# (Because of https://github.com/knurling-rs/probe-run/issues/391, use an older version for now)
-cargo install probe-run --version=0.3.6 --locked
+cargo install probe-run --locked
 # If you want to use elf2uf2-rs instead of probe-run, instead do...
 cargo install elf2uf2-rs --locked
 ```
