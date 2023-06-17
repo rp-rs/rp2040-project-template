@@ -237,8 +237,9 @@ Some of the options for your `runner` are listed below:
 <details open="open">
   <summary><h2 style="display: inline-block" id="notes-on-using-rp2040_boot2">Notes on using rp2040_boot2</h2></summary>
 
-  When rp2040_boot2 is used instead of rp-pico the bootloader
-  must be written to the .boot2 sector. This can be done by adding the
+  The second-stage boot loader must be written to the .boot2 section. That
+  is usually handled by the board support package (e.g.`rp-pico`). If you don't use
+  one, you should initialize the boot loader manually. This can be done by adding the
   following to the beginning of main.rs:
   ```rust
   use rp2040_boot2;
