@@ -20,6 +20,7 @@ If you aren't using a debugger (or want to use cargo-embed/probe-rs-debugger), c
     <li><a href="#installation-of-development-dependencies">Installation of development dependencies</a></li>
     <li><a href="#running">Running</a></li>
     <li><a href="#alternative-runners">Alternative runners</a></li>
+    <li><a href="#notes-on-using-rp2040_boot2">Notes on using rp2040_boot2</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#code-of-conduct">Code of conduct</a></li>
@@ -228,6 +229,24 @@ Some of the options for your `runner` are listed below:
   [pico-sdk](https://github.com/raspberrypi/pico-sdk) macros which hide
   information in the ELF file in a way that `picotool info` can read it out, are
   not supported in Rust. An alternative is TBC.
+
+</details>
+
+</details>
+<!-- Notes on using rp2040_hal and rp2040_boot2 -->
+<details open="open">
+  <summary><h2 style="display: inline-block" id="notes-on-using-rp2040_boot2">Notes on using rp2040_boot2</h2></summary>
+
+  The second-stage boot loader must be written to the .boot2 section. That
+  is usually handled by the board support package (e.g.`rp-pico`). If you don't use
+  one, you should initialize the boot loader manually. This can be done by adding the
+  following to the beginning of main.rs:
+  ```rust
+  use rp2040_boot2;
+  #[link_section = ".boot2"]
+  #[used]
+  pub static BOOT_LOADER: [u8; 256] = rp2040_boot2::BOOT_LOADER_W25Q080;
+  ```
 
 </details>
 
