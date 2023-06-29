@@ -20,6 +20,7 @@ If you aren't using a debugger (or want to use cargo-embed/probe-rs-debugger), c
     <li><a href="#installation-of-development-dependencies">Installation of development dependencies</a></li>
     <li><a href="#running">Running</a></li>
     <li><a href="#alternative-runners">Alternative runners</a></li>
+    <li><a href="#notes-on-using-rp2040_boot2">Notes on using rp2040_boot2</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#code-of-conduct">Code of conduct</a></li>
