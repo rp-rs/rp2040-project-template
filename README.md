@@ -61,7 +61,10 @@ cargo install flip-link
 cargo install probe-run --locked
 # If you want to use elf2uf2-rs instead of probe-run, instead do...
 cargo install elf2uf2-rs --locked
+# If you want to use any of the probe-rs tools (probe-rs run, cargo-embed, probe-rs-debugger)
+cargo install probe-rs --features=cli --locked
 ```
+If you get the error ``binary `cargo-embed` already exists`` during installation of probe-rs, run `cargo uninstall cargo-embed` to uninstall your older version of cargo-embed before trying again.
 
 </details>
 
@@ -129,15 +132,15 @@ If you don't have a debug probe or if you want to do interactive debugging you c
 Some of the options for your `runner` are listed below:
 
 * **cargo embed**  
-  *Step 1* - Install [`cargo embed`](https://github.com/probe-rs/probe-rs/blob/master/cargo-embed):
+  *Step 1* - Install cargo-embed. This is part of the [`probe-rs`](https://crates.io/crates/probe-rs) crate:
 
   ```console
-  $ cargo install --locked cargo-embed
+  $ cargo install probe-rs --features=cli --locked
   ```
 
   *Step 2* - Update settings in [Embed.toml](./Embed.toml)  
   - The defaults are to flash, reset, and start a defmt logging session
-  You can find all the settings and their meanings [in the cargo-embed repo](https://github.com/probe-rs/probe-rs/blob/master/cargo-embed/src/config/default.toml)
+  You can find all the settings and their meanings [in the probe-rs repo](https://github.com/probe-rs/probe-rs/blob/c0610e98008cbb34d0dc056fcddff0f2d4f50ad5/probe-rs/src/bin/probe-rs/cmd/cargo_embed/config/default.toml)
 
   *Step 3* - Use the command `cargo embed`, which will compile the code, flash the device
   and start running the configuration specified in Embed.toml
@@ -147,35 +150,31 @@ Some of the options for your `runner` are listed below:
   ```
 
 * **probe-rs-debugger**
+  *Step 1* - Install Visual Studio Code from https://code.visualstudio.com/
 
-  *Step 1* - Download [`probe-rs-debugger VSCode plugin 0.4.0`](https://github.com/probe-rs/vscode/releases/download/v0.4.0/probe-rs-debugger-0.4.0.vsix)
-
-  *Step 2* - Install `probe-rs-debugger VSCode plugin`
+  *Step 2* - Install `probe-rs`
   ```console
-  $ code --install-extension probe-rs-debugger-0.4.0.vsix
+  $ cargo install probe-rs --features=cli --locked
   ```
 
-  *Step 3* - Install `probe-rs-debugger`
-  ```console
-  $ cargo install probe-rs-debugger
-  ```
+  *Step 3* - Open this project in VSCode
 
-  *Step 4* - Open this project in VSCode
+  *Step 4* - Install `debugger for probe-rs` via the VSCode extensions menu (View > Extensions)
 
   *Step 5* - Launch a debug session by choosing `Run`>`Start Debugging` (or press F5)
 
-* **probe-rs-cli**  
-  *Step 1* - Install [`probe-rs-cli`](https://crates.io/crates/probe-rs-cli):
+* **probe-rs run**
+  *Step 1* - Install [`probe-rs`](https://crates.io/crates/probe-rs-cli):
 
   ```console
-  $ cargo install probe-rs-cli
+  $ cargo install probe-rs --features=cli --locked
   ```
 
   *Step 2* - Make sure your .cargo/config contains the following
 
   ```toml
   [target.thumbv6m-none-eabi]
-  runner = "probe-rs-cli run --chip RP2040 --protocol swd"
+  runner = "probe-rs run --chip RP2040 --protocol swd"
   ```
 
   *Step 3* - Use `cargo run`, which will compile the code and start the
@@ -229,8 +228,6 @@ Some of the options for your `runner` are listed below:
   [pico-sdk](https://github.com/raspberrypi/pico-sdk) macros which hide
   information in the ELF file in a way that `picotool info` can read it out, are
   not supported in Rust. An alternative is TBC.
-
-</details>
 
 </details>
 <!-- Notes on using rp2040_hal and rp2040_boot2 -->

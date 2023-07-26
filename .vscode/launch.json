@@ -12,9 +12,9 @@
             // RP2040 doesn't support connectUnderReset
             "connectUnderReset": false,
             "speed": 4000,
-            "runtimeExecutable": "probe-rs-debugger",
+            "runtimeExecutable": "probe-rs",
             "runtimeArgs": [
-                "debug"
+                "dap-server"
             ],
             "flashingConfig": {
                 "flashingEnabled": true,
