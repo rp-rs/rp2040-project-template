@@ -64,7 +64,7 @@ cargo install elf2uf2-rs --locked
 # If you want to use any of the probe-rs tools (probe-rs run, cargo-embed, probe-rs-debugger)
 cargo install probe-rs --features=cli --locked
 ```
-In case you get an error ``binary `cargo-embed` already exists``, you might need to run `cargo uninstall cargo-embed` to uninstall an older version.
+If you get the error ``binary `cargo-embed` already exists`` during installation of probe-rs, run `cargo uninstall cargo-embed` to uninstall your older version of cargo-embed before trying again.
 
 </details>
 
