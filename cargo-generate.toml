@@ -1,0 +1,7 @@
+[template]
+cargo_generate_version = ">=0.9.0"
+
+[hooks]
+pre = [
+    "cargo-generate/remove_rprs.rhai"
+]

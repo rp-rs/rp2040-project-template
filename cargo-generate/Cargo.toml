@@ -1,6 +1,6 @@
 [package]
 edition = "2021"
-name = "rp2040-project-template"
+name = "{{project-name}}"
 version = "0.1.0"
 license = "MIT OR Apache-2.0"
 
