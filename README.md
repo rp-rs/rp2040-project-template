@@ -21,6 +21,7 @@ If you aren't using a debugger (or want to use other debugging configurations), 
     <li><a href="#running">Running</a></li>
     <li><a href="#alternative-runners">Alternative runners</a></li>
     <li><a href="#notes-on-using-rp2040_boot2">Notes on using rp2040_boot2</a></li>
+    <li><a href="#feature-flags">Feature flags</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#code-of-conduct">Code of conduct</a></li>
@@ -226,6 +227,18 @@ Some of the options for your `runner` are listed below:
   pub static BOOT_LOADER: [u8; 256] = rp2040_boot2::BOOT_LOADER_W25Q080;
   ```
 
+</details>
+
+<!-- Feature flags -->
+<details open="open">
+  <summary><h2 style="display: inline-block" id="feature-flags">Feature flags</h2></summary>
+
+  There are several [feature flags in rp2040-hal](https://docs.rs/rp2040-hal/latest/rp2040_hal/#crate-features).
+  If you want to enable some of them, uncomment the `rp2040-hal` dependency in `Cargo.toml` and add the
+  desired feature flags there. For example, to enable ROM functions for f64 math using the feature `rom-v2-intrinsics`:
+  ```
+  rp2040-hal = { version="0.9", features=["rt", "critical-section-impl", "rom-v2-intrinsics"] }
+  ```
 </details>
 
 <!-- ROADMAP -->
