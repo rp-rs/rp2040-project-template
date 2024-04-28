@@ -7,7 +7,7 @@
 use bsp::entry;
 use defmt::*;
 use defmt_rtt as _;
-use embedded_hal::digital::v2::OutputPin;
+use embedded_hal::digital::OutputPin;
 use panic_probe as _;
 
 // Provide an alias for our BSP so we can switch targets quickly.

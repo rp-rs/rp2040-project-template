@@ -7,7 +7,7 @@ license = "MIT OR Apache-2.0"
 [dependencies]
 cortex-m = "0.7"
 cortex-m-rt = "0.7"
-embedded-hal = { version = "0.2.5", features = ["unproven"] }
+embedded-hal = { version = "1.0.0" }
 
 defmt = "0.3"
 defmt-rtt = "0.4"
