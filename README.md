@@ -59,9 +59,9 @@ If you aren't using a debugger (or want to use other debugging configurations), 
 rustup target install thumbv6m-none-eabi
 cargo install flip-link
 # Installs the probe-rs tools, including probe-rs run, our recommended default runner
-cargo install probe-rs --features=cli --locked
+cargo install --locked probe-rs-tools
 # If you want to use elf2uf2-rs instead, do...
-cargo install elf2uf2-rs --locked
+cargo install --locked elf2uf2-rs
 ```
 If you get the error ``binary `cargo-embed` already exists`` during installation of probe-rs, run `cargo uninstall cargo-embed` to uninstall your older version of cargo-embed before trying again.
 
@@ -138,12 +138,12 @@ Some of the options for your `runner` are listed below:
   *Step 1* - Install `cargo-embed`. This is part of the [`probe-rs`](https://crates.io/crates/probe-rs) tools:
 
   ```console
-  $ cargo install probe-rs --features=cli --locked
+  $ cargo install --locked probe-rs-tools
   ```
 
   *Step 2* - Update settings in [Embed.toml](./Embed.toml)  
   - The defaults are to flash, reset, and start a defmt logging session
-  You can find all the settings and their meanings [in the probe-rs repo](https://github.com/probe-rs/probe-rs/blob/c0610e98008cbb34d0dc056fcddff0f2d4f50ad5/probe-rs/src/bin/probe-rs/cmd/cargo_embed/config/default.toml)
+  You can find all the settings and their meanings [in the probe-rs repo](https://github.com/probe-rs/probe-rs/blob/c435072d0f101ade6fc3fde4a7899b8b5ef69195/probe-rs-tools/src/bin/probe-rs/cmd/cargo_embed/config/default.toml)
 
   *Step 3* - Use the command `cargo embed`, which will compile the code, flash the device
   and start running the configuration specified in Embed.toml
@@ -157,7 +157,7 @@ Some of the options for your `runner` are listed below:
 
   *Step 2* - Install `probe-rs`
   ```console
-  $ cargo install probe-rs --features=cli --locked
+  $ cargo install --locked probe-rs-tools
   ```
 
   *Step 3* - Open this project in VSCode
