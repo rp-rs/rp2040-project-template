@@ -2,8 +2,8 @@
 # Choose a default "cargo run" tool (see README for more info)
 # - `probe-rs` provides flashing and defmt via a hardware debugger, and stack unwind on panic
 # - elf2uf2-rs loads firmware over USB when the rp2040 is in boot mode
-runner = "probe-rs run --chip RP2040 --protocol swd"
-# runner = "elf2uf2-rs -d"
+# runner = "probe-rs run --chip RP2040 --protocol swd"
+runner = "elf2uf2-rs -d"
 
 rustflags = [
   "-C", "linker=flip-link",

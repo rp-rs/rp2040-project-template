@@ -62,8 +62,9 @@ fn main() -> ! {
     // If you have a Pico W and want to toggle a LED with a simple GPIO output pin, you can connect an external
     // LED to one of the GPIO pins, and reference that pin here. Don't forget adding an appropriate resistor
     // in series with the LED.
-    let mut led_pin = pins.led.into_push_pull_output();
-
+    // let mut led_pin = pins.led.into_push_pull_output();
+    // In this case gpio17 is the led pin(for Pro Micro RP2040 16MB)
+    let mut led_pin = pins.gpio17.into_push_pull_output();
     loop {
         info!("on!");
         led_pin.set_high().unwrap();
