@@ -74,3 +74,8 @@ debug-assertions = false
 incremental = false
 lto = 'fat'
 opt-level = 3
+
+[features]
+default = ["pro_micro_rp2040"]
+rp2040 = []
+pro_micro_rp2040 = []
