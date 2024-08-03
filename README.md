@@ -237,7 +237,7 @@ Some of the options for your `runner` are listed below:
   If you want to enable some of them, uncomment the `rp2040-hal` dependency in `Cargo.toml` and add the
   desired feature flags there. For example, to enable ROM functions for f64 math using the feature `rom-v2-intrinsics`:
   ```
-  rp2040-hal = { version="0.9", features=["rt", "critical-section-impl", "rom-v2-intrinsics"] }
+  rp2040-hal = { version="0.10", features=["rt", "critical-section-impl", "rom-v2-intrinsics"] }
   ```
 </details>
 
