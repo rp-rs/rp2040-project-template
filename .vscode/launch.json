@@ -18,7 +18,7 @@
             ],
             "flashingConfig": {
                 "flashingEnabled": true,
-                "haltAfterReset": true
+                "haltAfterReset": false
             },
             "coreConfigs": [
                 {
