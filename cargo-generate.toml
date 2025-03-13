@@ -1,6 +1,6 @@
 [template]
 cargo_generate_version = ">=0.9.0"
-
+exclude = [".github/workflows/ci_checks.yml"]
 [hooks]
 pre = ["cargo-generate/remove_rprs.rhai"]
 
