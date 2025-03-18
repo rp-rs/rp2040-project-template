@@ -20,7 +20,7 @@ rp-pico = "0.9"
 # sparkfun-pro-micro-rp2040 = "0.8"
 
 # If you're not going to use a Board Support Package you'll need these:
-# rp2040-hal = { version="0.10", features=["rt", "critical-section-impl"] }
+# rp2040-hal = { version="0.11", features=["rt", "critical-section-impl"] }
 # rp2040-boot2 = "0.3"
 
 # cargo build/run
