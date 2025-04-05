@@ -16,6 +16,7 @@ If you aren't using a debugger (or want to use other debugging configurations), 
   
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
+    <li><a href="#quickstart">Quickstart</a></li>
     <li><a href="#markdown-header-requirements">Requirements</a></li>
     <li><a href="#installation-of-development-dependencies">Installation of development dependencies</a></li>
     <li><a href="#running">Running</a></li>
@@ -29,6 +30,61 @@ If you aren't using a debugger (or want to use other debugging configurations), 
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
+
+<!-- Quickstart -->
+<details open="open">
+  <summary><h2 style="display: inline-block" id="quickstart">Quickstart</h2></summary>
+
+This quickstart assumes that you've got a [Raspberry Pi
+Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/) (the first-generation
+version containing the RP2040 MCU) as well as a [Raspberry Pi Debug
+Probe](https://www.raspberrypi.com/products/debug-probe/) and will flash the Pico with
+[probe-rs](https://probe.rs/).
+
+Note: you don't have to use this setup. It's just the most common and well-supported setup.
+See the rest of the README for instructions on setting up different hardware or software.
+
+1. [Connect](https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html#getting-started)
+   your Raspberry Pi Pico and Debug Probe to your development host.
+
+1. Set up `cargo generate`:
+
+   ```
+   $ cargo install cargo-generate
+   ```
+
+1. Start your project by copying this template:
+
+   ```
+   $ cargo generate rp-rs/rp2040-project-template
+   ```
+
+1. Install the cross-compilation toolchain:
+
+   ```
+   $ rustup target install thumbv6m-none-eabi
+   ```
+
+1. Install stack overflow protection:
+
+   ```
+   $ cargo install flip-link
+   ```
+
+1. Install the flashing tools:
+
+   ```
+   $ cargo install --locked probe-rs-tools
+   ```
+
+1. Flash the debug build of the blinky app to your Pico:
+
+   ```
+   $ cargo run
+   ```
+
+</details>
+
 
 <!-- Requirements -->
 <details open="open">
