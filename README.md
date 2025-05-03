@@ -277,8 +277,8 @@ to intervene to uphold that code of conduct.
 
 ## License
 
-The contents of this repository are dual-licensed under the [_MIT OR Apache
-2.0_ License](LICENSE). That means you can chose either the MIT licence or the
+The contents of this repository are dual-licensed under the _[MIT](LICENSE-MIT) OR [Apache
+2.0](LICENSE-APACHE_2.0)_ License. That means you can chose either the MIT licence or the
 Apache-2.0 licence when you re-use this code. See [`LICENSE-MIT`](LICENSE-MIT) or [`LICENSE-APACHE-2.0`](LICENSE-APACHE-2.0) for more
 information on each specific licence.
 
