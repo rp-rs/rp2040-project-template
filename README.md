@@ -40,9 +40,9 @@ If you aren't using a debugger (or want to use other debugging configurations), 
 
 - flip-link - this allows you to detect stack-overflows on the first core, which is the only supported target for now.
 
-- (by default) A [`probe-rs` installation](https://probe.rs/docs/getting-started/installation/)
+- (by default) A [`probe-rs` installation](https://probe.rs/docs/getting-started/installation)
 
-- A [`probe-rs` compatible](https://probe.rs/docs/getting-started/probe-setup/) probe
+- A [`probe-rs` compatible](https://probe.rs/docs/getting-started/probe-setup) probe
 
   You can use a second
   [Pico as a CMSIS-DAP debug probe](debug_probes.md#raspberry-pi-pico). Details
@@ -132,7 +132,7 @@ Some of the options for your `runner` are listed below:
 
 * **`cargo embed`**
   This is basically a more configurable version of `probe-rs run`, our default runner.
-  See [the `cargo-embed` tool docs page](https://probe.rs/docs/tools/cargo-embed/) for
+  See [the `cargo-embed` tool docs page](https://probe.rs/docs/tools/cargo-embed) for
   more information.
   
   *Step 1* - Install `cargo-embed`. This is part of the [`probe-rs`](https://crates.io/crates/probe-rs) tools:
