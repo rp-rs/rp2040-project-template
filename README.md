@@ -18,6 +18,7 @@ If you aren't using a debugger (or want to use other debugging configurations), 
   <ol>
     <li><a href="#markdown-header-requirements">Requirements</a></li>
     <li><a href="#installation-of-development-dependencies">Installation of development dependencies</a></li>
+    <li><a href="#project-creation">Project Creation</a></li>
     <li><a href="#running">Running</a></li>
     <li><a href="#alternative-runners">Alternative runners</a></li>
     <li><a href="#notes-on-using-rp2040_boot2">Notes on using rp2040_boot2</a></li>
@@ -41,7 +42,6 @@ If you aren't using a debugger (or want to use other debugging configurations), 
 - flip-link - this allows you to detect stack-overflows on the first core, which is the only supported target for now.
 
 - (by default) A [`probe-rs` installation](https://probe.rs/docs/getting-started/installation)
-
 - A [`probe-rs` compatible](https://probe.rs/docs/getting-started/probe-setup) probe
 
   You can use a second
@@ -67,6 +67,31 @@ If you get the error ``binary `cargo-embed` already exists`` during installation
 
 </details>
 
+<!-- Creating the project -->
+<details open="open">
+  <summary><h2 style="display: inline-block" id="project-creation">Creating your project</h2></summary>
+
+### Using `cargo-generate`
+
+```sh
+cargo generate --git https://github.com/rp-rs/rp2040-project-template
+```
+
+Follow the wizard 🪄 and enjoy your new project.
+
+### Downloading as a zip file or using GitHub's template support
+
+Obtain a copy of the code, either by downloading this repository as a zip file or using GitHub's
+template feature, then apply the following:
+- Remove `debug_probe.md`.
+- Remove the `cargo-generate` directory.
+- Remote/edit `README.md`.
+- If using vscode update `.vscode/launch.json`;
+  Else: remove this file.
+- Edit `Cargo.toml` & adjust according to your project (especially its name).
+- Edit `.cargo/config.tml` to select your favorite runner.
+
+</details>
 
 <!-- Running -->
 <details open="open">
