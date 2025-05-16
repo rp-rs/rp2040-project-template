@@ -83,13 +83,13 @@ Follow the wizard 🪄 and enjoy your new project.
 
 Obtain a copy of the code, either by downloading this repository as a zip file or using GitHub's
 template feature, then apply the following:
-- Remove `debug_probe.md`.
+- Remove `debug_probes.md`.
 - Remove the `cargo-generate` directory.
-- Remote/edit `README.md`.
+- Remove/edit `README.md`.
 - If using vscode update `.vscode/launch.json`;
   Else: remove this file.
 - Edit `Cargo.toml` & adjust according to your project (especially its name).
-- Edit `.cargo/config.tml` to select your favorite runner.
+- Edit `.cargo/config.toml` to select your favorite runner.
 
 </details>
 
