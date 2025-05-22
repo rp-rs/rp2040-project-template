@@ -55,6 +55,8 @@ If you aren't using a debugger (or want to use other debugging configurations), 
 <details open="open">
   <summary><h2 style="display: inline-block" id="installation-of-development-dependencies">Installation of development dependencies</h2></summary>
 
+If you are using [Nix](https://nixos.org/), you can use the `devShell` made available in `flake.nix`. Otherwise, you can follow these commands (provided you already have [`Rustup`](https://rustup.rs/) installed):
+
 ```sh
 rustup target install thumbv6m-none-eabi
 cargo install flip-link
