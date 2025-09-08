@@ -221,8 +221,8 @@ Some of the options for your `runner` are listed below:
   
   *Step 1* - Install `cargo-embed`. This is part of the [`probe-rs`](https://crates.io/crates/probe-rs) tools:
 
-  ```console
-  $ cargo install --locked probe-rs-tools
+  ```sh
+  cargo install --locked probe-rs-tools
   ```
 
   *Step 2* - Update settings in [Embed.toml](./Embed.toml)  
@@ -232,16 +232,16 @@ Some of the options for your `runner` are listed below:
   *Step 3* - Use the command `cargo embed`, which will compile the code, flash the device
   and start running the configuration specified in Embed.toml
 
-  ```console
-  $ cargo embed --release
+  ```sh
+  cargo embed --release
   ```
 
 * **probe-rs-debugger**
   *Step 1* - Install Visual Studio Code from https://code.visualstudio.com/
 
   *Step 2* - Install `probe-rs`
-  ```console
-  $ cargo install --locked probe-rs-tools
+  ```sh
+  cargo install --locked probe-rs-tools
   ```
 
   *Step 3* - Open this project in VSCode
@@ -271,8 +271,8 @@ Some of the options for your `runner` are listed below:
   specified 'runner'. As the 'runner' is picotool, it will use the PICOBOOT
   interface over USB to flash your RP2040.
 
-  ```console
-  $ cargo run --release
+  ```sh
+  cargo run --release
   ```
 
 </details>
