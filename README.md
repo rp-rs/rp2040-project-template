@@ -116,9 +116,12 @@ rustup target install thumbv6m-none-eabi
 cargo install flip-link
 # Installs the probe-rs tools, including probe-rs run, our recommended default runner
 cargo install --locked probe-rs-tools
-# If you want to use elf2uf2-rs instead, do...
-cargo install --locked elf2uf2-rs
 ```
+
+If you want to use picotool instead, install a [picotool binary][] for your system.
+
+[picotool binary]: https://github.com/raspberrypi/pico-sdk-tools/releases
+
 If you get the error ``binary `cargo-embed` already exists`` during installation of probe-rs, run `cargo uninstall cargo-embed` to uninstall your older version of cargo-embed before trying again.
 
 </details>
@@ -247,18 +250,14 @@ Some of the options for your `runner` are listed below:
 
   *Step 5* - Launch a debug session by choosing `Run`>`Start Debugging` (or press F5)
 
-* **Loading a UF2 over USB**  
-  *Step 1* - Install [`elf2uf2-rs`](https://github.com/JoNil/elf2uf2-rs):
-
-  ```console
-  $ cargo install elf2uf2-rs --locked
-  ```
+* **Loading over USB with Picotool**  
+  *Step 1* - Install a [picotool binary][] for your system.
 
   *Step 2* - Modify `.cargo/config` to change the default runner
 
   ```toml
   [target.`cfg(all(target-arch = "arm", target_os = "none"))`]
-  runner = "elf2uf2-rs -d"
+  runner = "picotool load --update --verify --execute -t elf"
   ```
 
   The all-Arm wildcard `'cfg(all(target_arch = "arm", target_os = "none"))'` is used
@@ -266,31 +265,15 @@ Some of the options for your `runner` are listed below:
   `thumbv6m-none-eabi`.
 
   *Step 3* - Boot your RP2040 into "USB Bootloader mode", typically by rebooting
-  whilst holding some kind of "Boot Select" button. On Linux, you will also need
-  to 'mount' the device, like you would a USB Thumb Drive.
+  whilst holding some kind of "Boot Select" button.
 
   *Step 4* - Use `cargo run`, which will compile the code and start the
-  specified 'runner'. As the 'runner' is the `elf2uf2-rs` tool, it will build a UF2
-  file and copy it to your RP2040.
+  specified 'runner'. As the 'runner' is picotool, it will use the PICOBOOT
+  interface over USB to flash your RP2040.
 
   ```console
   $ cargo run --release
   ```
-
-* **Loading with picotool**  
-  As ELF files produced by compiling Rust code are completely compatible with ELF
-  files produced by compiling C or C++ code, you can also use the Raspberry Pi
-  tool [picotool](https://github.com/raspberrypi/picotool). The only thing to be
-  aware of is that picotool expects your ELF files to have a `.elf` extension, and
-  by default Rust does not give the ELF files any extension. You can fix this by
-  simply renaming the file.
-
-  This means you can't easily use it as a cargo runner - yet.
-
-  Also of note is that the special
-  [pico-sdk](https://github.com/raspberrypi/pico-sdk) macros which hide
-  information in the ELF file in a way that `picotool info` can read it out, are
-  not supported in Rust. An alternative is TBC.
 
 </details>
 <!-- Notes on using rp2040_hal and rp2040_boot2 -->
