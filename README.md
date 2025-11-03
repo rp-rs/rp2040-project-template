@@ -51,37 +51,37 @@ See the rest of the README for instructions on setting up different hardware or 
 1. Set up `cargo generate`:
 
    ```
-   $ cargo install cargo-generate
+   cargo install cargo-generate
    ```
 
 1. Start your project by copying this template:
 
    ```
-   $ cargo generate rp-rs/rp2040-project-template
+   cargo generate rp-rs/rp2040-project-template
    ```
 
 1. Install the cross-compilation toolchain:
 
    ```
-   $ rustup target install thumbv6m-none-eabi
+   rustup target install thumbv6m-none-eabi
    ```
 
 1. Install stack overflow protection:
 
    ```
-   $ cargo install flip-link
+   cargo install flip-link
    ```
 
 1. Install the flashing tools:
 
    ```
-   $ cargo install --locked probe-rs-tools
+   cargo install --locked probe-rs-tools
    ```
 
 1. Flash the debug build of the blinky app to your Pico:
 
    ```
-   $ cargo run
+   cargo run
    ```
 
 </details>
